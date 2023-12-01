@@ -16,6 +16,7 @@ public class PlayerControllerX : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip moneySound;
     public AudioClip explodeSound;
+    public int score = 0;
 
 
     // Start is called before the first frame update
@@ -48,7 +49,7 @@ public class PlayerControllerX : MonoBehaviour
             explosionParticle.Play();
             playerAudio.PlayOneShot(explodeSound, 1.0f);
             gameOver = true;
-            Debug.Log("Game Over!");
+            Debug.Log("Game Over! Score: " + score);
             Destroy(other.gameObject);
         } 
 
@@ -58,7 +59,19 @@ public class PlayerControllerX : MonoBehaviour
             fireworksParticle.Play();
             playerAudio.PlayOneShot(moneySound, 1.0f);
             Destroy(other.gameObject);
-
+            if (score < 10) {
+                score = score + 1;
+            }
+            else if (score < 50) {
+                score = score + 2;
+            }
+            else if (score < 250) {
+                score = score + 5;
+            }
+            else {
+                score = score + 10;
+            }
+            Debug.Log(score);
         }
 
     }
