@@ -71,16 +71,16 @@ public class PlayerControllerX : MonoBehaviour
             else if (score < 180) {
                 score = score + 10;
             }
-            else if (score < 380) {
+            else if (score < 400) {
                 score = score + 20;
             }
-            else if (score < 880) {
+            else if (score < 900) {
                 score = score + 50;
             }
             else {
                 score = score + 100;
             }
-            Debug.Log(score);
+            Debug.Log("score:" + score);
         }
 
     }
