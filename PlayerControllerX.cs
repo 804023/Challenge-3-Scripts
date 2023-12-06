@@ -16,7 +16,9 @@ public class PlayerControllerX : MonoBehaviour
     private AudioSource playerAudio;
     public AudioClip moneySound;
     public AudioClip explodeSound;
-    public int score = 0;
+    public int count = 0;
+    public int prescore = 0;
+    private double score;
 
 
     // Start is called before the first frame update
@@ -39,6 +41,7 @@ public class PlayerControllerX : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * floatForce);
         }
+        
     }
 
     private void OnCollisionEnter(Collision other)
@@ -49,7 +52,7 @@ public class PlayerControllerX : MonoBehaviour
             explosionParticle.Play();
             playerAudio.PlayOneShot(explodeSound, 1.0f);
             gameOver = true;
-            Debug.Log("Game Over! Score: " + score);
+            Debug.Log("Game Over! You collected $" + score + " from " + count + " money signs.");
             Destroy(other.gameObject);
         } 
 
@@ -59,28 +62,68 @@ public class PlayerControllerX : MonoBehaviour
             fireworksParticle.Play();
             playerAudio.PlayOneShot(moneySound, 1.0f);
             Destroy(other.gameObject);
-            if (score < 10) {
+            count = count + 1;
+            //easy mode
+            if (prescore < 10) {
+                prescore = prescore + 1;
+            }
+            else if (prescore < 65) {
+                prescore = prescore + 5;
+            }
+            else if (prescore < 175) {
+                prescore = prescore + 10;
+            }
+            else if (prescore < 450) {
+                prescore = prescore + 25;
+            }
+            else if (prescore < 1000) {
+                prescore = prescore + 50;
+            }
+            else if (prescore < 2000) {
+                prescore = prescore + 100;
+            }
+            else if (prescore < 4000) {
+                prescore = prescore + 200;
+            }
+            else if (prescore < 9000) {
+                prescore = prescore + 500;
+            }
+            else if (prescore < 20000) {
+                prescore = prescore + 1000;
+            }
+            else if (prescore < 40000) {
+                prescore = prescore + 2000;
+            }
+            else if (prescore < 90000) {
+                prescore = prescore + 5000;
+            }
+            else {
+                prescore = prescore + 10000;
+            }
+            //hard mode
+            /*if (score < 20) {
                 score = score + 1;
             }
-            else if (score < 30) {
+            else if (score < 60) {
                 score = score + 2;
             }
-            else if (score < 80) {
+            else if (score < 160) {
                 score = score + 5;
             }
-            else if (score < 180) {
+            else if (score < 360) {
                 score = score + 10;
             }
-            else if (score < 400) {
+            else if (score < 800) {
                 score = score + 20;
             }
-            else if (score < 900) {
+            else if (score < 1800) {
                 score = score + 50;
             }
             else {
                 score = score + 100;
-            }
-            Debug.Log("score:" + score);
+            }*/
+            score = (Mathf.Round(prescore * 100))/10000.00;
+            Debug.Log("$" + score.ToString("F2"));
         }
 
     }
