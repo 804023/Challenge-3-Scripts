@@ -52,7 +52,7 @@ public class PlayerControllerX : MonoBehaviour
             explosionParticle.Play();
             playerAudio.PlayOneShot(explodeSound, 1.0f);
             gameOver = true;
-            Debug.Log("Game Over! You collected $" + score + " from " + count + " money signs.");
+            Debug.Log("Game Over! You collected $" + score.ToString("n2") + " from " + count + " money signs.");
             Destroy(other.gameObject);
         } 
 
@@ -64,37 +64,37 @@ public class PlayerControllerX : MonoBehaviour
             Destroy(other.gameObject);
             count = count + 1;
             //easy mode
-            if (prescore < 10) {
+            if (count <= 10) {
                 prescore = prescore + 1;
             }
-            else if (prescore < 65) {
+            else if (count <= 22) {
                 prescore = prescore + 5;
             }
-            else if (prescore < 175) {
+            else if (count <= 35) {
                 prescore = prescore + 10;
             }
-            else if (prescore < 450) {
+            else if (count <= 45) {
                 prescore = prescore + 25;
             }
-            else if (prescore < 1000) {
+            else if (count <= 56) {
                 prescore = prescore + 50;
             }
-            else if (prescore < 2000) {
+            else if (count <= 66) {
                 prescore = prescore + 100;
             }
-            else if (prescore < 4000) {
+            else if (count <= 76) {
                 prescore = prescore + 200;
             }
-            else if (prescore < 9000) {
+            else if (count <= 86) {
                 prescore = prescore + 500;
             }
-            else if (prescore < 20000) {
+            else if (count <= 87) {
                 prescore = prescore + 1000;
             }
-            else if (prescore < 40000) {
+            else if (count <= 97) {
                 prescore = prescore + 2000;
             }
-            else if (prescore < 90000) {
+            else if (count <= 107) {
                 prescore = prescore + 5000;
             }
             else {
@@ -123,7 +123,7 @@ public class PlayerControllerX : MonoBehaviour
                 score = score + 100;
             }*/
             score = (Mathf.Round(prescore * 100))/10000.00;
-            Debug.Log("$" + score.ToString("F2"));
+            Debug.Log("$" + score.ToString("n2"));
         }
 
     }
