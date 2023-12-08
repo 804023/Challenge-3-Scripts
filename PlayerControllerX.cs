@@ -19,6 +19,10 @@ public class PlayerControllerX : MonoBehaviour
     public int count = 0;
     public int prescore = 0;
     private double score;
+    private int multiplier = 2;
+    private int mcount = 1;
+    private int mvalue;
+    private double cvalue;
 
 
     // Start is called before the first frame update
@@ -41,7 +45,7 @@ public class PlayerControllerX : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * floatForce);
         }
-        
+        mvalue = 10 + (multiplier * mcount);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -65,40 +69,40 @@ public class PlayerControllerX : MonoBehaviour
             count = count + 1;
             //easy mode
             if (count <= 10) {
-                prescore = prescore + 1;
+                prescore = prescore + 1 * mvalue;
             }
             else if (count <= 22) {
-                prescore = prescore + 5;
+                prescore = prescore + 5 * mvalue;
             }
             else if (count <= 35) {
-                prescore = prescore + 10;
+                prescore = prescore + 10 * mvalue;
             }
             else if (count <= 45) {
-                prescore = prescore + 25;
+                prescore = prescore + 25 * mvalue;
             }
             else if (count <= 56) {
-                prescore = prescore + 50;
+                prescore = prescore + 50 * mvalue;
             }
             else if (count <= 66) {
-                prescore = prescore + 100;
+                prescore = prescore + 100 * mvalue;
             }
             else if (count <= 76) {
-                prescore = prescore + 200;
+                prescore = prescore + 200 * mvalue;
             }
             else if (count <= 86) {
-                prescore = prescore + 500;
+                prescore = prescore + 500 * mvalue;
             }
             else if (count <= 87) {
-                prescore = prescore + 1000;
+                prescore = prescore + 1000 * mvalue;
             }
             else if (count <= 97) {
-                prescore = prescore + 2000;
+                prescore = prescore + 2000 * mvalue;
             }
             else if (count <= 107) {
-                prescore = prescore + 5000;
+                prescore = prescore + 5000 * mvalue;
             }
             else {
-                prescore = prescore + 10000;
+                prescore = prescore + 10000 * mvalue;
             }
             //hard mode
             /*if (score < 20) {
@@ -122,8 +126,9 @@ public class PlayerControllerX : MonoBehaviour
             else {
                 score = score + 100;
             }*/
-            score = (Mathf.Round(prescore * 100))/10000.00;
-            Debug.Log("$" + score.ToString("n2"));
+            score = (Mathf.Round(prescore * 100))/100000.00;
+            cvalue = (Mathf.Round(mvalue * 10))/100.0;
+            Debug.Log("$" + score.ToString("n2") + " -  Current Multiplier: x" + cvalue.ToString("f1"));
         }
 
     }
