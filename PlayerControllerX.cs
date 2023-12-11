@@ -20,7 +20,7 @@ public class PlayerControllerX : MonoBehaviour
     public int prescore = 0;
     private double score;
     private int multiplier = 2;
-    private int mcount = 1;
+    private int mcount = 0;
     private int mvalue;
     private double cvalue;
 
@@ -129,6 +129,12 @@ public class PlayerControllerX : MonoBehaviour
             score = (Mathf.Round(prescore * 100))/100000.00;
             cvalue = (Mathf.Round(mvalue * 10))/100.0;
             Debug.Log("$" + score.ToString("n2") + " -  Current Multiplier: x" + cvalue.ToString("f1"));
+        }
+        else if(other.gameObject.CompareTag("Multiplier")) {
+            mcount = mcount + 1;
+            fireworksParticle.Play();
+            playerAudio.PlayOneShot(moneySound, 1.0f);
+            Destroy(other.gameObject);
         }
 
     }
