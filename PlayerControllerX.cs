@@ -71,60 +71,75 @@ public class PlayerControllerX : MonoBehaviour
             if (count <= 10) {
                 prescore = prescore + 1 * mvalue;
             }
-            else if (count <= 22) {
+            else if (count <= 20) {
                 prescore = prescore + 5 * mvalue;
             }
-            else if (count <= 35) {
+            else if (count <= 30) {
                 prescore = prescore + 10 * mvalue;
             }
-            else if (count <= 45) {
+            else if (count <= 40) {
                 prescore = prescore + 25 * mvalue;
             }
-            else if (count <= 56) {
+            else if (count <= 50) {
                 prescore = prescore + 50 * mvalue;
             }
-            else if (count <= 66) {
+            else if (count <= 60) {
                 prescore = prescore + 100 * mvalue;
             }
-            else if (count <= 76) {
+            else if (count <= 70) {
                 prescore = prescore + 200 * mvalue;
             }
-            else if (count <= 86) {
+            else if (count <= 80) {
                 prescore = prescore + 500 * mvalue;
             }
-            else if (count <= 87) {
+            else if (count <= 90) {
                 prescore = prescore + 1000 * mvalue;
             }
-            else if (count <= 97) {
+            else if (count <= 100) {
                 prescore = prescore + 2000 * mvalue;
             }
-            else if (count <= 107) {
+            else if (count <= 110) {
                 prescore = prescore + 5000 * mvalue;
             }
             else {
                 prescore = prescore + 10000 * mvalue;
             }
             //hard mode
-            /*if (score < 20) {
-                score = score + 1;
+            /*if (count <= 20) {
+                prescore = prescore + 1 * mvalue;
             }
-            else if (score < 60) {
-                score = score + 2;
+            else if (count <= 40) {
+                prescore = prescore + 5 * mvalue;
             }
-            else if (score < 160) {
-                score = score + 5;
+            else if (count <= 60) {
+                prescore = prescore + 10 * mvalue;
             }
-            else if (score < 360) {
-                score = score + 10;
+            else if (count <= 80) {
+                prescore = prescore + 25 * mvalue;
             }
-            else if (score < 800) {
-                score = score + 20;
+            else if (count <= 100) {
+                prescore = prescore + 50 * mvalue;
             }
-            else if (score < 1800) {
-                score = score + 50;
+            else if (count <= 120) {
+                prescore = prescore + 100 * mvalue;
+            }
+            else if (count <= 140) {
+                prescore = prescore + 200 * mvalue;
+            }
+            else if (count <= 160) {
+                prescore = prescore + 500 * mvalue;
+            }
+            else if (count <= 180) {
+                prescore = prescore + 1000 * mvalue;
+            }
+            else if (count <= 200) {
+                prescore = prescore + 2000 * mvalue;
+            }
+            else if (count <= 220) {
+                prescore = prescore + 5000 * mvalue;
             }
             else {
-                score = score + 100;
+                prescore = prescore + 10000 * mvalue;
             }*/
             score = (Mathf.Round(prescore * 100))/100000.00;
             cvalue = (Mathf.Round(mvalue * 10))/100.0;
