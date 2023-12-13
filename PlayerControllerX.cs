@@ -19,10 +19,14 @@ public class PlayerControllerX : MonoBehaviour
     public int count = 0;
     public int prescore = 0;
     private double score;
-    private int multiplier = 2;
+    private int multiplier0 = 2;
+    private int multiplier1 = 1;
     private int mcount = 0;
-    private int mvalue;
+    private int mvalue0;
+    private int mvalue1;
     private double cvalue;
+    [SerializeField]
+    public int gamemode = 1;
 
 
     // Start is called before the first frame update
@@ -45,7 +49,8 @@ public class PlayerControllerX : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * floatForce);
         }
-        mvalue = 10 + (multiplier * mcount);
+        mvalue0 = 10 + (multiplier0 * mcount);
+        mvalue1 = 2 + (multiplier1 * mcount);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -68,82 +73,91 @@ public class PlayerControllerX : MonoBehaviour
             Destroy(other.gameObject);
             count = count + 1;
             //easy mode
-            if (count <= 10) {
-                prescore = prescore + 1 * mvalue;
-            }
-            else if (count <= 20) {
-                prescore = prescore + 5 * mvalue;
-            }
-            else if (count <= 30) {
-                prescore = prescore + 10 * mvalue;
-            }
-            else if (count <= 40) {
-                prescore = prescore + 25 * mvalue;
-            }
-            else if (count <= 50) {
-                prescore = prescore + 50 * mvalue;
-            }
-            else if (count <= 60) {
-                prescore = prescore + 100 * mvalue;
-            }
-            else if (count <= 70) {
-                prescore = prescore + 200 * mvalue;
-            }
-            else if (count <= 80) {
-                prescore = prescore + 500 * mvalue;
-            }
-            else if (count <= 90) {
-                prescore = prescore + 1000 * mvalue;
-            }
-            else if (count <= 100) {
-                prescore = prescore + 2000 * mvalue;
-            }
-            else if (count <= 110) {
-                prescore = prescore + 5000 * mvalue;
-            }
-            else {
-                prescore = prescore + 10000 * mvalue;
+            if (gamemode == 0)
+            {
+                if (count <= 10) {
+                prescore = prescore + 1 * mvalue0;
+                }
+                else if (count <= 20) {
+                    prescore = prescore + 5 * mvalue0;
+                }
+                else if (count <= 30) {
+                    prescore = prescore + 10 * mvalue0;
+                }
+                else if (count <= 40) {
+                    prescore = prescore + 25 * mvalue0;
+                }
+                else if (count <= 50) {
+                    prescore = prescore + 50 * mvalue0;
+                }
+                else if (count <= 60) {
+                    prescore = prescore + 100 * mvalue0;
+                }
+                else if (count <= 70) {
+                    prescore = prescore + 200 * mvalue0;
+                }
+                else if (count <= 80) {
+                    prescore = prescore + 500 * mvalue0;
+                }
+                else if (count <= 90) {
+                    prescore = prescore + 1000 * mvalue0;
+                }
+                else if (count <= 100) {
+                    prescore = prescore + 2000 * mvalue0;
+                }
+                else if (count <= 110) {
+                    prescore = prescore + 5000 * mvalue0;
+                }
+                else {
+                    prescore = prescore + 10000 * mvalue0;
+                }
+                score = (Mathf.Round(prescore * 100))/100000.00;
+                cvalue = (Mathf.Round(mvalue0 * 10))/100.0;
+                Debug.Log("$" + score.ToString("n2") + " -  Current Multiplier: x" + cvalue.ToString("f1"));
             }
             //hard mode
-            /*if (count <= 20) {
-                prescore = prescore + 1 * mvalue;
+            if (gamemode == 1) {
+                if (count <= 20) {
+                prescore = prescore + 1 * mvalue1;
+                }
+                else if (count <= 40) {
+                    prescore = prescore + 5 * mvalue1;
+                }
+                else if (count <= 60) {
+                    prescore = prescore + 10 * mvalue1;
+                }
+                else if (count <= 80) {
+                    prescore = prescore + 25 * mvalue1;
+                }
+                else if (count <= 100) {
+                    prescore = prescore + 50 * mvalue1;
+                }
+                else if (count <= 120) {
+                    prescore = prescore + 100 * mvalue1;
+                }
+                else if (count <= 140) {
+                    prescore = prescore + 200 * mvalue1;
+                }
+                else if (count <= 160) {
+                    prescore = prescore + 500 * mvalue1;
+                }
+                else if (count <= 180) {
+                    prescore = prescore + 1000 * mvalue1;
+                }
+                else if (count <= 200) {
+                    prescore = prescore + 2000 * mvalue1;
+                }
+                else if (count <= 220) {
+                    prescore = prescore + 5000 * mvalue1;
+                }
+                else {
+                    prescore = prescore + 10000 * mvalue1;
+                }
+                score = (Mathf.Round(prescore * 100))/100000.00;
+                cvalue = (Mathf.Round(mvalue1 * 10))/100.0;
+                Debug.Log("$" + score.ToString("n2") + " -  Current Multiplier: x" + cvalue.ToString("f1"));
             }
-            else if (count <= 40) {
-                prescore = prescore + 5 * mvalue;
-            }
-            else if (count <= 60) {
-                prescore = prescore + 10 * mvalue;
-            }
-            else if (count <= 80) {
-                prescore = prescore + 25 * mvalue;
-            }
-            else if (count <= 100) {
-                prescore = prescore + 50 * mvalue;
-            }
-            else if (count <= 120) {
-                prescore = prescore + 100 * mvalue;
-            }
-            else if (count <= 140) {
-                prescore = prescore + 200 * mvalue;
-            }
-            else if (count <= 160) {
-                prescore = prescore + 500 * mvalue;
-            }
-            else if (count <= 180) {
-                prescore = prescore + 1000 * mvalue;
-            }
-            else if (count <= 200) {
-                prescore = prescore + 2000 * mvalue;
-            }
-            else if (count <= 220) {
-                prescore = prescore + 5000 * mvalue;
-            }
-            else {
-                prescore = prescore + 10000 * mvalue;
-            }*/
-            score = (Mathf.Round(prescore * 100))/100000.00;
-            cvalue = (Mathf.Round(mvalue * 10))/100.0;
-            Debug.Log("$" + score.ToString("n2") + " -  Current Multiplier: x" + cvalue.ToString("f1"));
+            
         }
         else if(other.gameObject.CompareTag("Multiplier")) {
             mcount = mcount + 1;

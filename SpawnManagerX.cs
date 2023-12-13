@@ -22,7 +22,7 @@ public class SpawnManagerX : MonoBehaviour
     // Spawn obstacles
     void SpawnObjects ()
     {
-        //if(gamemode == true) {
+        //if(gamemode == 0) {
             // Set random spawn location and random object index
             Vector3 spawnLocation = new Vector3(30, Random.Range(5, 15), 0);
             int index = Random.Range(0, objectPrefabsEasy.Length);
