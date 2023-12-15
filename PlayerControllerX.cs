@@ -26,7 +26,7 @@ public class PlayerControllerX : MonoBehaviour
     private int mvalue1;
     private double cvalue;
     [SerializeField]
-    public int gamemode = 1;
+    public int gamemode = 0;
 
 
     // Start is called before the first frame update
