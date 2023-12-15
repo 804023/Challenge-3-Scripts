@@ -8,7 +8,7 @@ public class SpawnManagerX : MonoBehaviour
     public GameObject[] objectPrefabsHard;
     private float spawnDelay = 2;
     private float spawnIntervalEasy = 1.5f;
-    private float spawnIntervalHard = 0.75f;
+    //private float spawnIntervalHard = 0.75f;
 
     private PlayerControllerX playerControllerScript;
 
